@@ -286,6 +286,25 @@ function drawPaddle() {
     ctx.closePath();
 }
 
+// Level 2 Paddle
+function drawPaddle2() {
+    ctx. beginPath();
+    ctx.rect(paddleX, canvas.height-paddleHeight, paddleWidth+15, paddleHeight);
+    ctx.fillStyle = "#0095DD";
+    ctx.fill();
+    ctx.closePath();
+}
+
+
+// Level 3 Paddle
+function drawPaddle3() {
+    ctx. beginPath();
+    ctx.rect(paddleX, canvas.height-paddleHeight, paddleWidth+30, paddleHeight);
+    ctx.fillStyle = "#0095DD";
+    ctx.fill();
+    ctx.closePath();
+}
+
 
 // Create Bricks
 function drawBricks() {
@@ -402,7 +421,7 @@ function drawLevel2() {
     drawBricksLevel2();
     drawBall();
     drawBall2();
-    drawPaddle();
+    drawPaddle2();
     drawScore();
     drawLives();
     collisionDetectionLevel2();
@@ -480,7 +499,7 @@ function drawLevel3() {
     drawBall();
     drawBall2();
     drawBall3();
-    drawPaddle();
+    drawPaddle3();
     drawScore();
     drawLives();
     collisionDetectionLevel3();

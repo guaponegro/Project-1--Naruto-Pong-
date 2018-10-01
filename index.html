@@ -22,8 +22,12 @@ const ctx = canvas.getContext("2d");
 // Game Board
 let x = canvas.width/2;
 let y = canvas.height-30;
+let x2 = canvas.width/4;
+let y2 = canvas.height-15;
 let dx = 2;
 let dy = -2;
+let dx2 = 2;
+let dy2 = -2;
 // Ball Size
 let ballRadius = 10;
 // Paddle Control
@@ -196,6 +200,15 @@ function drawBall() {
     ctx.closePath();
 }
 
+// Create Second Ball
+function drawBall2() {
+    ctx.beginPath();
+    ctx.arc(x2, y2, ballRadius, 0, Math.PI*2);
+    ctx.fillStyle = "#FF0000";
+    ctx.fill();
+    ctx.closePath();
+}
+
 
 // Create Paddle
 function drawPaddle() {
@@ -321,6 +334,7 @@ function drawLevel2() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     drawBricksLevel2();
     drawBall();
+    drawBall2();
     drawPaddle();
     drawScore();
     drawLives();
@@ -351,7 +365,32 @@ function drawLevel2() {
             }
         }
     }
-    
+    if(x2 + dx2 > canvas.width-ballRadius || x2 + dx2 < ballRadius) {
+        dx2 = -dx2;
+    }
+    if(y2 + dy2 < ballRadius) {
+        dy2 = -dy2;
+    }
+    else if(y2 + dy2 > canvas.height-ballRadius) {
+        if(x2 > paddleX && x2 < paddleX + paddleWidth) {
+            dy2 = -dy2;
+        }
+        else {
+            lives--;
+            if(!lives) {
+                alert("GAME OVER");
+                document.location.reload();
+            }
+            else {
+                x2 = canvas.width/4;
+                y2 = canvas.height-15;
+                dx2 = 2;
+                dy2 = -2;
+                paddleX = (canvas.width-paddleWidth)/2;
+            }
+        }
+    }
+
     if(rightPressed && paddleX < canvas.width-paddleWidth) {
         paddleX += 7;
     }
@@ -361,6 +400,8 @@ function drawLevel2() {
     
     x += dx;
     y += dy;
+    x2 += dx2;
+    y2 += dy2;
     if(currentLevel == 2){
         requestAnimationFrame(drawLevel2);
     }

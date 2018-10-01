@@ -19,9 +19,9 @@ The user will start on level 1 (Genin) and work their way up to level 3 (Hokage)
 
 
 3 Levels
-Genin - 1 ball, regular sized paddle
-Chunin - 1 ball, regular paddle, increase speed +2
-Jonin (Hokage) - 2 balls (1 normal speed, 1 speed +2) , paddle size increases by 2, bricks take 2 hits to be destroyed
+Chunin - 1 ball, regular sized paddle
+Jonin - 1 ball, regular paddle, increase speed +2
+Hokage - 2 balls (1 normal speed, 1 speed +2) , paddle size increases by 2, bricks take 2 hits to be destroyed
 
 Extra Gameplay
 

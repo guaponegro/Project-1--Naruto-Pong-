@@ -17,7 +17,7 @@
 <body>
     
     <div class="container">
-        <h1 id="title">Pong</h1>
+        <h1 class="title">Pong</h1>
         <div class="row">
             <div class="col">
                 <h3 class='scoreboard'></h3>
@@ -30,7 +30,7 @@
     </div>
 
     <div class='button-container'>
-        <button class="btn btn-primary" type="submit">Start Game!</button>
+        <button class="btn btn-primary" id="start" type="submit">Start Game!</button>
         <input class="btn btn-primary" type="button" value="How to Play">
     </div>
 
@@ -646,7 +646,7 @@ function drawLevel3() {
         requestAnimationFrame(drawLevel3);
     }
 }
-draw();
+// draw();
 
 
 

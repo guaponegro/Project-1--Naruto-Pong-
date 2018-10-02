@@ -30,8 +30,8 @@ let dx = 2;
 let dy = -2;
 let dx2 = 4;
 let dy2 = -4;
-let dx3 = 6;
-let dy3 = -6;
+let dx3 = 5;
+let dy3 = -5;
 // Ball Size
 let ballRadius = 10;
 // Paddle Control
@@ -51,7 +51,7 @@ let brickOffsetLeft = 50;
 // Scoreboard
 let score = 0;
 // Lives
-let lives = 3;
+let lives = 5;
 // Current level
 let currentLevel = 1;
 
@@ -185,7 +185,7 @@ function collisionDetectionLevel3() {
                     dy = -dy;
                     b.status--;
                     score++;
-                    if(score == ((brickRowCount*brickColumnCount)*3)) {
+                    if(score == ((brickRowCount*brickColumnCount)*4)) {
                         alert("YOU BEAT THE GAME! CONGRATULATIONS!");
                         document.location.reload();
                         // currentLevel++;
@@ -203,7 +203,7 @@ function collisionDetectionLevel3() {
                     dy2 = -dy2;
                     b.status--;
                     score++;
-                    if(score == ((brickRowCount*brickColumnCount)*2)) {
+                    if(score == ((brickRowCount*brickColumnCount)*4)) {
                         alert("YOU BEAT THE GAME! CONGRATULATIONS!");
                         // currentLevel++;
                         // drawLevel4();
@@ -217,12 +217,12 @@ function collisionDetectionLevel3() {
             let b = level3Bricks[c][r];
             if(b.status > 0){
                 if(x3 > b.x && x3 < b.x+brickWidth && y3 > b.y && y3 < b.y+brickHeight) {
-                    console.log("THIRD BALL HIT");
                     dy3 = -dy3;
                     b.status--;
                     score++;
-                    if(score == ((brickRowCount*brickColumnCount)*2)) {
+                    if(score == ((brickRowCount*brickColumnCount)*4)) {
                         alert("YOU BEAT THE GAME! CONGRATULATIONS!");
+                        document.location.reload();
                         // currentLevel++;
                         // drawLevel4();
                     }
@@ -289,7 +289,7 @@ function drawPaddle() {
 // Level 2 Paddle
 function drawPaddle2() {
     ctx. beginPath();
-    ctx.rect(paddleX, canvas.height-paddleHeight, paddleWidth+15, paddleHeight);
+    ctx.rect(paddleX, canvas.height-paddleHeight, paddleWidth+20, paddleHeight);
     ctx.fillStyle = "#0095DD";
     ctx.fill();
     ctx.closePath();
@@ -299,7 +299,7 @@ function drawPaddle2() {
 // Level 3 Paddle
 function drawPaddle3() {
     ctx. beginPath();
-    ctx.rect(paddleX, canvas.height-paddleHeight, paddleWidth+30, paddleHeight);
+    ctx.rect(paddleX, canvas.height-paddleHeight, paddleWidth+40, paddleHeight);
     ctx.fillStyle = "#0095DD";
     ctx.fill();
     ctx.closePath();
@@ -317,7 +317,7 @@ function drawBricks() {
                 bricks[c][r].y = brickY;
                 ctx.beginPath();
                 ctx.rect(brickX, brickY, brickWidth, brickHeight);
-                ctx.fillStyle = "#0095DD";
+                ctx.fillStyle = "#000000";
                 ctx.fill();
                 ctx.closePath();
             } 
@@ -337,7 +337,7 @@ function drawBricksLevel2() {
                 level2Bricks[c][r].y = brickY;
                 ctx.beginPath();
                 ctx.rect(brickX, brickY, brickWidth, brickHeight);
-                ctx.fillStyle = "#0095DD";
+                ctx.fillStyle = "#000000";
                 ctx.fill();
                 ctx.closePath();
             } 
@@ -350,22 +350,33 @@ function drawBricksLevel2() {
 function drawBricksLevel3() {
     for(let c = 0; c < brickColumnCount; c++) {
         for(let r = 0; r < brickRowCount; r++) {
-            if(level3Bricks[c][r].status > 0){
+            if(level3Bricks[c][r].status == 2){
                 let brickX = (c * (brickWidth+brickPadding)) + brickOffsetLeft;
                 let brickY = (r * (brickHeight+brickPadding)) + brickOffsetTop;
                 level3Bricks[c][r].x = brickX;
                 level3Bricks[c][r].y = brickY;
                 ctx.beginPath();
                 ctx.rect(brickX, brickY, brickWidth, brickHeight);
-                ctx.fillStyle = "#0095DD";
+                ctx.fillStyle = "#000000";
                 ctx.fill();
                 ctx.closePath();
             } 
+            if(level3Bricks[c][r].status == 1){
+                let brickX = (c * (brickWidth+brickPadding)) + brickOffsetLeft;
+                let brickY = (r * (brickHeight+brickPadding)) + brickOffsetTop;
+                level3Bricks[c][r].x = brickX;
+                level3Bricks[c][r].y = brickY;
+                ctx.beginPath();
+                ctx.rect(brickX, brickY, brickWidth, brickHeight);
+                ctx.fillStyle = "#FFFF00";
+                ctx.fill();
+                ctx.closePath();
+            }
         }
     }
 }
 
-
+// "#0095DD"
 // Action function 
 function draw() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);

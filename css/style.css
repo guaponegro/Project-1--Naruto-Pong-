@@ -1,0 +1,10 @@
+.title{
+    text-align: center;
+}
+
+body{
+    background-repeat: no-repeat; 
+    background-image: url(../images/Rick-and-Morty-Bg.gif);
+    background-position: center;
+    background-size: cover;
+}

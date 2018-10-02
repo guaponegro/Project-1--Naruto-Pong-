@@ -8,22 +8,24 @@
 
 <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-
+    <link rel="stylesheet" href="css/style.css">
     <style>
     	* { padding: 0; margin: 0; }
-    	canvas { background: #eee; display: block; margin: 0 auto; }
+    	canvas { background: #eee; display: block; margin: 0 auto;}
     </style>
 </head>
 <body>
     
     <div class="container">
-        <h1 class="title">Pong</h1>
         <div class="row">
-            <div class="col">
+            <div class="col" id="col-left">
                 <h3 class='scoreboard'></h3>
             </div>
-            <div class="col-9"><canvas id="myCanvas" width="600" height="420"></canvas></div>
-            <div class="col">
+            <div class="col-9">
+                <h1 class="title">Pong</h1>
+                <canvas id="myCanvas" width="600" height="420"></canvas>
+            </div>
+            <div class="col" id="col-right">
                 <h3 class='lifecount'></h3>
             </div>
         </div>
@@ -31,7 +33,7 @@
 
     <div class='button-container'>
         <button class="btn btn-primary" id="start" type="submit">Start Game!</button>
-        <input class="btn btn-primary" type="button" value="How to Play">
+        <input class="btn btn-primary" id="instructions" type="button" value="How to Play">
     </div>
 
     

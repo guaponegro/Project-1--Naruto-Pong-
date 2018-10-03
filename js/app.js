@@ -18,7 +18,7 @@ $("#how-to-play").remove();
 
   //How To Play Button
   $("#how-to-play").on("click", (e) => {
-    $('.modal').modal()
+    $('.modal1').modal()
   });
 
 

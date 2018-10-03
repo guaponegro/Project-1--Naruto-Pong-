@@ -80,3 +80,7 @@ body {
 		-1px 1px 0 #00FF00,
 		1px 1px 0 #00FF00;
 }
+
+.you-lose {
+    width: 100%;
+}

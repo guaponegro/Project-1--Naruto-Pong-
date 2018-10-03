@@ -38,7 +38,9 @@
         <button class="btn btn-primary" id="how-to-play" type="submit">How To Play</button>
     </div>
 
-    <div class="modal" tabindex="-1" role="dialog">
+    
+<!-- How to Play Modal -->
+    <div class="modal modal1" tabindex="-1" role="dialog">
         <div class="modal-dialog" role="document">
           <div class="modal-content">
             <div class="modal-header">
@@ -63,6 +65,30 @@
         </div>
       </div>
     
+
+<!-- You Lose Modal -->
+      <div class="modal youLoseModal" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title">You Lose!</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                    <img class='you-lose' src='images/Disqualified.jpg'>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+
+
 
 
 
@@ -461,8 +487,9 @@ function draw() {
             lives--;
             $('.lives').text("Lives: " + lives + "");
             if(!lives) {
-                alert("GAME OVER");
-                document.location.reload();
+                // alert("GAME OVER");
+                return $('.youLoseModal').modal();
+                // document.location.reload();
             }
             else {
                 x = canvas.width/2;
@@ -512,8 +539,9 @@ function drawLevel2() {
             lives--;
             $('.lives').text("Lives: " + lives + "");
             if(!lives) {
-                alert("GAME OVER");
-                document.location.reload();
+                // alert("GAME OVER");
+                return $('.youLoseModal').modal();
+                // document.location.reload();
             }
             else {
                 x = canvas.width/2;
@@ -538,8 +566,9 @@ function drawLevel2() {
             lives--;
             $('.lives').text("Lives: " + lives + "");
             if(!lives) {
-                alert("GAME OVER");
-                document.location.reload();
+                // alert("GAME OVER");
+                return $('.youLoseModal').modal();
+                // document.location.reload();
             }
             else {
                 x2 = canvas.width/4;
@@ -592,8 +621,9 @@ function drawLevel3() {
             lives--;
             $('.lives').text("Lives: " + lives + "");
             if(!lives) {
-                alert("GAME OVER");
-                document.location.reload();
+                // alert("GAME OVER");
+                return $('.youLoseModal').modal();
+                // document.location.reload();
             }
             else {
                 x = canvas.width/2;
@@ -618,8 +648,9 @@ function drawLevel3() {
             lives--;
             $('.lives').text("Lives: " + lives + "");
             if(!lives) {
-                alert("GAME OVER");
-                document.location.reload();
+                // alert("GAME OVER");
+                return $('.youLoseModal').modal();
+                // document.location.reload();
             }
             else {
                 x2 = canvas.width/4;
@@ -644,8 +675,9 @@ function drawLevel3() {
             lives--;
             $('.lives').text("Lives: " + lives + "");
             if(!lives) {
-                alert("GAME OVER");
-                document.location.reload();
+                // alert("GAME OVER");
+                return $('.youLoseModal').modal();
+                // document.location.reload();
             }
             else {
                 x3 = canvas.width/6;

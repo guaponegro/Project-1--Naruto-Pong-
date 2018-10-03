@@ -5,9 +5,9 @@ User will start game by clicking a start game button in the middle of the screen
 User will also have a how to play button on the right that when pressed will give detailed instructions as to how the game will work
 Once user has clicked start, they will be introduced to a normal game of pong where they start on level 1 with 5 lives
 The user will have to move through each level and try to destroy all the bricks on the level, while controlling the paddle with the left and right arrow keys or their mouse
-Once, all the bricks are destroyed, the user will move onto the next level, where the game gets harder
+Once, all the bricks on the level are destroyed, the user will move onto the next level, where the game gets harder
 Once the user reaches level 3, they have finally won the game and you get the option to restart
-However, if the user loses all 5 lives, the game is officially over and will 
+However, if the user loses all 5 lives, the game is officially over and will restart
 
 
 Minimum Viable Game

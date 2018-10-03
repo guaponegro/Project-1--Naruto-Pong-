@@ -7,13 +7,25 @@ $('.score').text("Score: " + score + "");
 $('.lifecount').append("<span class='lives'>Lives: (0)</span>");
 $('.lives').text("Lives: " + lives + "");
 
-// Start Game
+// Start Game Button
 $("#start").on("click", (e) => {
-
+$("<img class='right-side-pic' src='images/Rick-Dancing.gif'></img>").appendTo(".right-half")
+$("<img class='left-side-pic' src='images/Rick-Twerking2.gif'></img>").appendTo(".left-half")
+$("#start").remove();
+$("#how-to-play").remove();
     draw();
   });
 
+  //How To Play Button
+  $("#how-to-play").on("click", (e) => {
+    $('.modal').modal()
+  });
+
+
+
+
+
+
+
   
 
-$("#col-right").append("<span id='img'></span>");
-$("#img").attr("src", "../images/Rick-Dancing.gif")

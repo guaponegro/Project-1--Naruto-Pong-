@@ -20,22 +20,48 @@
         <div class="row">
             <div class="col" id="col-left">
                 <h3 class='scoreboard'></h3>
+                <div class="left-half"></div>
             </div>
             <div class="col-9">
-                <h1 class="title">Pong</h1>
-                <canvas id="myCanvas" width="600" height="420"></canvas>
+                <h1 class="title">Rick and Morty Pong</h1>
+                <canvas id="myCanvas" width="550" height="420"></canvas>
             </div>
             <div class="col" id="col-right">
                 <h3 class='lifecount'></h3>
+                <div class="right-half"></div>
             </div>
         </div>
     </div>
 
     <div class='button-container'>
         <button class="btn btn-primary" id="start" type="submit">Start Game!</button>
-        <input class="btn btn-primary" id="instructions" type="button" value="How to Play">
+        <button class="btn btn-primary" id="how-to-play" type="submit">How To Play</button>
     </div>
 
+    <div class="modal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">How To Play</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <p>1. User will start game by clicking a start game button in the middle of the screen</p>
+              <p>2. Once user has clicked start, they will be introduced to a normal game of pong where they start on level 1 with 5 lives</p>
+              <p>3. The user will have to move through each level and try to destroy all the bricks on the level, while controlling the paddle with the left and right arrow keys or their mouse</p>
+              <p>4. Once, all the bricks on the level are destroyed, the user will move onto the next level, where the game gets harder</p>
+              <p>5. Once the user reaches level 3, they have finally won the game and you get the option to restart</p>
+              <p>6. However, if the user loses all 5 lives, the game is officially over and will restart</p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+            </div>
+          </div>
+        </div>
+      </div>
     
 
 
@@ -70,8 +96,8 @@ let rightPressed = false;
 let leftPressed = false;
 // Brick Variables
 let brickRowCount = 3;
-let brickColumnCount = 6;
-let brickWidth = 75;
+let brickColumnCount = 5;
+let brickWidth = 80;
 let brickHeight = 20;
 let brickPadding = 10;
 let brickOffsetTop = 30;
@@ -152,7 +178,7 @@ function collisionDetection() {
                     dy = -dy;
                     b.status = 0;
                     score++;
-                    $('#score').text("Score: " + score + " ");
+                    $('.score').text("Score: " + score + " ");
                     if(score == brickRowCount*brickColumnCount) {
                         alert("YOU BEAT LEVEL 1! GET READY FOR LEVEL 2!");
                         currentLevel++;
@@ -175,7 +201,7 @@ function collisionDetectionLevel2() {
                     dy = -dy;
                     b.status = 0;
                     score++;
-                    $('#score').text("Score: " + score + " ");
+                    $('.score').text("Score: " + score + " ");
                     if(score == ((brickRowCount*brickColumnCount)*2)) {
                         alert("YOU BEAT LEVEL 2! GET READY FOR THE FINAL LEVEL!");
                         currentLevel++
@@ -193,7 +219,7 @@ function collisionDetectionLevel2() {
                     dy2 = -dy2;
                     b.status = 0;
                     score++;
-                    $('#score').text("Score: " + score + " ");
+                    $('.score').text("Score: " + score + " ");
                     if(score == ((brickRowCount*brickColumnCount)*2)) {
                         alert("YOU BEAT LEVEL 2! GET READY FOR THE FINAL LEVEL!");
                         currentLevel++
@@ -216,7 +242,7 @@ function collisionDetectionLevel3() {
                     dy = -dy;
                     b.status--;
                     score++;
-                    $('#score').text("Score: " + score + " ");
+                    $('.score').text("Score: " + score + " ");
                     if(score == ((brickRowCount*brickColumnCount)*4)) {
                         alert("YOU BEAT THE GAME! CONGRATULATIONS!");
                         document.location.reload();
@@ -235,7 +261,7 @@ function collisionDetectionLevel3() {
                     dy2 = -dy2;
                     b.status--;
                     score++;
-                    $('#score').text("Score: " + score + " ");
+                    $('.score').text("Score: " + score + " ");
                     if(score == ((brickRowCount*brickColumnCount)*4)) {
                         alert("YOU BEAT THE GAME! CONGRATULATIONS!");
                         // currentLevel++;
@@ -253,7 +279,7 @@ function collisionDetectionLevel3() {
                     dy3 = -dy3;
                     b.status--;
                     score++;
-                    $('#score').text("Score: " + score + " ");
+                    $('.score').text("Score: " + score + " ");
                     if(score == ((brickRowCount*brickColumnCount)*4)) {
                         alert("YOU BEAT THE GAME! CONGRATULATIONS!");
                         document.location.reload();
@@ -433,7 +459,7 @@ function draw() {
         }
         else {
             lives--;
-            $('#lives').text("Lives: " + lives + "");
+            $('.lives').text("Lives: " + lives + "");
             if(!lives) {
                 alert("GAME OVER");
                 document.location.reload();
@@ -484,7 +510,7 @@ function drawLevel2() {
         }
         else {
             lives--;
-            $('#lives').text("Lives: " + lives + "");
+            $('.lives').text("Lives: " + lives + "");
             if(!lives) {
                 alert("GAME OVER");
                 document.location.reload();
@@ -510,7 +536,7 @@ function drawLevel2() {
         }
         else {
             lives--;
-            $('#lives').text("Lives: " + lives + "");
+            $('.lives').text("Lives: " + lives + "");
             if(!lives) {
                 alert("GAME OVER");
                 document.location.reload();
@@ -564,7 +590,7 @@ function drawLevel3() {
         }
         else {
             lives--;
-            $('#lives').text("Lives: " + lives + "");
+            $('.lives').text("Lives: " + lives + "");
             if(!lives) {
                 alert("GAME OVER");
                 document.location.reload();
@@ -590,7 +616,7 @@ function drawLevel3() {
         }
         else {
             lives--;
-            $('#lives').text("Lives: " + lives + "");
+            $('.lives').text("Lives: " + lives + "");
             if(!lives) {
                 alert("GAME OVER");
                 document.location.reload();
@@ -616,7 +642,7 @@ function drawLevel3() {
         }
         else {
             lives--;
-            $('#lives').text("Lives: " + lives + "");
+            $('.lives').text("Lives: " + lives + "");
             if(!lives) {
                 alert("GAME OVER");
                 document.location.reload();

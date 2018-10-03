@@ -21,6 +21,10 @@ $("#how-to-play").remove();
     $('.modal1').modal()
   });
 
+// Reload Button
+  $(".reloadPage").on("click", (e) => {
+    window.location.reload(true);
+  })
 
 
 

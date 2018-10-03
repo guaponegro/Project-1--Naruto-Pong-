@@ -84,3 +84,15 @@ body {
 .you-lose {
     width: 100%;
 }
+
+.you-win {
+    width: 100%;
+}
+
+.motivation {
+    text-align: center;
+}
+
+.level-2 {
+    width: 100%;
+}

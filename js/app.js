@@ -9,12 +9,11 @@ $('.lives').text("Lives: " + lives + "");
 
 // Start Game Button
 $("#start").on("click", (e) => {
-$("<img class='right-side-pic' src='images/Rick-Dancing.gif'></img>").appendTo(".right-half")
+  $("<img class='right-side-pic' src='images/Rick-Dancing.gif'></img>").appendTo(".right-half")
 // $("<img class='left-side-pic' src='images/Rick-Twerking2.gif'></img>").appendTo(".left-half")
-$("#start").remove();
-$("#how-to-play").remove();
-homepageAudio().pause();
-    draw();
+  $("#start").remove();
+  $("#how-to-play").remove();
+  draw();
   });
 
   //How To Play Button

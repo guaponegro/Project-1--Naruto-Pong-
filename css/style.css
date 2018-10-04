@@ -1,6 +1,6 @@
 .title {
     text-align: center;
-    color: white;
+    color: blue;
     font-family: "Get Schwifty";
     text-shadow:
 		-1px -1px 0 #00FF00,
@@ -9,9 +9,6 @@
         1px 1px 0 #00FF00;
     margin-top: 20px;
     margin-bottom: 20px;
-    color: blue;
-    /* height: 150px;
-    width: 850px; */
 }
 
 body {
@@ -27,7 +24,7 @@ body {
 }
 
 .score {
-    color: white;
+    color: blue;
     font-family: "Get Schwifty";
     text-shadow:
 		-1px -1px 0 #00FF00,
@@ -35,11 +32,10 @@ body {
 		-1px 1px 0 #00FF00,
         1px 1px 0 #00FF00;
     margin-top: 50px;
-    color: blue;
 }
 
 .lives {
-    color: white;
+    color: blue;
     font-family: "Get Schwifty";
     text-shadow:
 		-1px -1px 0 #00FF00,
@@ -47,7 +43,6 @@ body {
 		-1px 1px 0 #00FF00,
         1px 1px 0 #00FF00;
     margin-top: 100px;
-    color: blue;
 }
 
 .right-side-pic {
@@ -77,7 +72,9 @@ body {
 		-1px -1px 0 #00FF00,
 		1px -1px 0 #00FF00,
 		-1px 1px 0 #00FF00,
-		1px 1px 0 #00FF00;
+        1px 1px 0 #00FF00;
+    /* background: rgba(0,0,0,0.8); */
+    /* color: blue; */
 }
 
 .modal-title {
@@ -87,6 +84,30 @@ body {
 		1px -1px 0 #00FF00,
 		-1px 1px 0 #00FF00,
 		1px 1px 0 #00FF00;
+}
+
+.closeModal {
+    font-family: "Get Schwifty";
+    text-shadow:
+		-1px -1px 0 #00FF00,
+		1px -1px 0 #00FF00,
+		-1px 1px 0 #00FF00,
+        1px 1px 0 #00FF00;
+    background: rgba(0,0,0,1);
+    color: blue;
+    border: solid 1px black;
+}
+
+.reloadPage {
+    font-family: "Get Schwifty";
+    text-shadow:
+		-1px -1px 0 #00FF00,
+		1px -1px 0 #00FF00,
+		-1px 1px 0 #00FF00,
+        1px 1px 0 #00FF00;
+    color: blue;
+    background: rgba(0,0,0,1);
+    border: solid 1px black;
 }
 
 .you-lose {
@@ -135,3 +156,4 @@ body {
     border: solid 1px black;
     color: blue;
 }
+

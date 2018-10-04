@@ -11,11 +11,8 @@
     <link rel="stylesheet" href="css/style.css">
     <style>
     	* { padding: 0; margin: 0; }
-    	canvas { display: block; margin: 0 auto;}
+    	canvas { display: block; margin: 0 auto}
     </style>
-
-    <!-- Velocity Library -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/velocity/1.5.2/velocity.js"></script>
 
     <!-- jQuery Library -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -39,6 +36,7 @@
         </div>
     </div>
 
+<!-- Home Page Buttons -->
     <div class='button-container'>
         <button class="btn btn-primary startButton" id="start" type="submit">Start Game!</button>
         <button class="btn btn-primary how-to-playButton" id="how-to-play" type="submit">How To Play</button>
@@ -244,15 +242,9 @@ let currentLevel = 1;
 // Modal Control
 let modalShowing = false;
 
-// Homepage Audio Function
-const homePageAudio = () => {
-    $("#schwifty5")[0].play();
-}
-
-homePageAudio();
 
 
-// Close Modal Function
+// Close Modals Function
 $(".modal").on("click", ".closeModal", () => {
     $(".modal").modal("hide");
     $(document.body).removeClass("modal-open");
@@ -852,12 +844,6 @@ function drawLevel3() {
         requestAnimationFrame(drawLevel3);
     }
 }
-
-
-
-
-
-
 
 
 

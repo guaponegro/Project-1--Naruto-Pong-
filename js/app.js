@@ -13,7 +13,7 @@ $("<img class='right-side-pic' src='images/Rick-Dancing.gif'></img>").appendTo("
 // $("<img class='left-side-pic' src='images/Rick-Twerking2.gif'></img>").appendTo(".left-half")
 $("#start").remove();
 $("#how-to-play").remove();
-$('#schwifty5')[0].pause();
+homepageAudio().pause();
     draw();
   });
 
@@ -26,6 +26,7 @@ $('#schwifty5')[0].pause();
   $(".reloadPage").on("click", (e) => {
     window.location.reload(true);
   })
+  
 
 
 

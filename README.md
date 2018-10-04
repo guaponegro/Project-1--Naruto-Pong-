@@ -20,8 +20,8 @@ The user will start on level 1  and work their way up to level 3 , where each le
 
 3 Levels
 Group Stage - 1 ball, regular sized paddle
-Semi-Finals - 2 balls, paddle size increased, increase speed +2
-Finals - 3 balls (1 normal speed, 1 speed +2, 1 speed +4) , paddle size increased, bricks take 2 hits to be destroyed
+Semi-Finals - 2 balls, paddle size increased, increase speed
+Finals - 3 balls (1 normal speed, 1 speed+, 1 speed ++) , paddle size increased, bricks take 2 hits to be destroyed
 
 Extra Gameplay
 

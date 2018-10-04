@@ -40,8 +40,8 @@
     </div>
 
     <div class='button-container'>
-        <button class="btn btn-primary" id="start" type="submit">Start Game!</button>
-        <button class="btn btn-primary" id="how-to-play" type="submit">How To Play</button>
+        <button class="btn btn-primary startButton" id="start" type="submit">Start Game!</button>
+        <button class="btn btn-primary how-to-playButton" id="how-to-play" type="submit">How To Play</button>
     </div>
 
 
@@ -244,8 +244,13 @@ let currentLevel = 1;
 // Modal Control
 let modalShowing = false;
 
-// Home Page Audio
-$("#schwifty5")[0].play();
+// Homepage Audio Function
+const homePageAudio = () => {
+    $("#schwifty5")[0].play();
+}
+
+homePageAudio();
+
 
 // Close Modal Function
 $(".modal").on("click", ".closeModal", () => {

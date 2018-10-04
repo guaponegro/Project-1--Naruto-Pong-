@@ -11,8 +11,13 @@
     <link rel="stylesheet" href="css/style.css">
     <style>
     	* { padding: 0; margin: 0; }
-    	canvas { background: #eee; display: block; margin: 0 auto;}
+    	canvas { display: block; margin: 0 auto;}
     </style>
+
+    <!-- Velocity Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/velocity/1.5.2/velocity.js"></script>
+
+    <!-- jQuery Library -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 </head>
 <body>
@@ -184,6 +189,11 @@
     <source src="Sounds/Disqualified.mp3">
 </audio>
 
+<!-- Home Page Audio -->
+<audio class='audio-sounds' id="schwifty5" autoplay>
+    <source src="Sounds/Theme-Song.mp3">
+</audio>
+
 
 
 
@@ -191,7 +201,7 @@
 
 
 <script>
-    // JavaScript code goes here 
+// JavaScript code goes here 
     
 
 const canvas = document.getElementById("myCanvas");
@@ -203,8 +213,8 @@ let x2 = canvas.width/4;
 let y2 = canvas.height-20;
 let x3 = canvas.width/6;
 let y3 = canvas.height-10;
-let dx = 2;
-let dy = -2;
+let dx = 2.5;
+let dy = -2.5;
 let dx2 = 3;
 let dy2 = -3;
 let dx3 = 4;
@@ -220,11 +230,11 @@ let leftPressed = false;
 // Brick Variables
 let brickRowCount = 3;
 let brickColumnCount = 5;
-let brickWidth = 80;
-let brickHeight = 20;
+let brickWidth = 90;
+let brickHeight = 25;
 let brickPadding = 10;
 let brickOffsetTop = 30;
-let brickOffsetLeft = 50;
+let brickOffsetLeft = 40;
 // Score Tracker
 let score = 0;
 // Lives
@@ -234,15 +244,24 @@ let currentLevel = 1;
 // Modal Control
 let modalShowing = false;
 
+// Home Page Audio
+$("#schwifty5")[0].play();
+
 // Close Modal Function
 $(".modal").on("click", ".closeModal", () => {
+    $(".modal").modal("hide");
+    $(document.body).removeClass("modal-open");
+    $(".modal-backdrop").remove();
     modalShowing = false;
   })
 
 
 // Close Audio Function
-$("audio").on("click", ".closeModal", () => {
-    $(".audio-sounds").remove();
+$("body").on("click", ".closeModal", () => {
+    $('#schwifty1')[0].pause();
+    $('#schwifty2')[0].pause();
+    $('#schwifty3')[0].pause();
+    $('#schwifty4')[0].pause();
 })
 
 
@@ -329,7 +348,6 @@ function collisionDetection() {
     }
 }
 
-
 // Brick Collision Function Level 2
 function collisionDetectionLevel2() {
     for(let c=0; c<brickColumnCount; c++) {
@@ -373,7 +391,6 @@ function collisionDetectionLevel2() {
         }
     }
 }
-
 
 // Brick Collision Function Level 3
 function collisionDetectionLevel3() {
@@ -435,14 +452,12 @@ function collisionDetectionLevel3() {
     }
 }
 
-
 // Scoreboard Function
 function drawScore() {
     ctx.font = "16px Arial";
     ctx.fillStyle = "#0095DD";
     ctx.fillText("Score: "+score, 8, 20);
 }
-
 
 // Lives Function
 function drawLives() {
@@ -451,7 +466,9 @@ function drawLives() {
     ctx.fillText("Lives: "+lives, canvas.width-65, 20);
 }
 
-// Creating Ball
+// Create Balls Functions
+
+// Group Stage Ball
 function drawBall() {
     ctx.beginPath();
     ctx.arc(x, y, ballRadius, 0, Math.PI*2);
@@ -460,7 +477,7 @@ function drawBall() {
     ctx.closePath();
 }
 
-// Create Second Ball
+// SemiFinals Ball
 function drawBall2() {
     ctx.beginPath();
     ctx.arc(x2, y2, ballRadius, 0, Math.PI*2);
@@ -469,8 +486,7 @@ function drawBall2() {
     ctx.closePath();
 }
 
-
-// Create Third Ball
+// Finals Ball
 function drawBall3() {
     ctx.beginPath();
     ctx.arc(x3, y3, ballRadius, 0, Math.PI*2);
@@ -479,37 +495,38 @@ function drawBall3() {
     ctx.closePath();
 }
 
+// Create Paddles
 
-// Create Paddle
+// Group Stage Paddle
 function drawPaddle() {
     ctx. beginPath();
     ctx.rect(paddleX, canvas.height-paddleHeight, paddleWidth, paddleHeight);
-    ctx.fillStyle = "#0095DD";
+    ctx.fillStyle = "#000000";
     ctx.fill();
     ctx.closePath();
 }
 
-// Level 2 Paddle
+// SemiFinals Paddle
 function drawPaddle2() {
     ctx. beginPath();
     ctx.rect(paddleX, canvas.height-paddleHeight, paddleWidth+20, paddleHeight);
-    ctx.fillStyle = "#0095DD";
+    ctx.fillStyle = "#000000";
     ctx.fill();
     ctx.closePath();
 }
 
-
-// Level 3 Paddle
+// Finals Paddle
 function drawPaddle3() {
     ctx. beginPath();
     ctx.rect(paddleX, canvas.height-paddleHeight, paddleWidth+40, paddleHeight);
-    ctx.fillStyle = "#0095DD";
+    ctx.fillStyle = "#000000";
     ctx.fill();
     ctx.closePath();
 }
 
-
 // Create Bricks
+
+// Group Stage Bricks
 function drawBricks() {
     for(let c = 0; c < brickColumnCount; c++) {
         for(let r = 0; r < brickRowCount; r++) {
@@ -529,7 +546,7 @@ function drawBricks() {
 }
 
 
-// Level 2 Bricks
+// SemiFinals Bricks
 function drawBricksLevel2() {
     for(let c = 0; c < brickColumnCount; c++) {
         for(let r = 0; r < brickRowCount; r++) {
@@ -549,7 +566,7 @@ function drawBricksLevel2() {
 }
 
 
-// Level 3 Bricks
+// Finals Bricks
 function drawBricksLevel3() {
     for(let c = 0; c < brickColumnCount; c++) {
         for(let r = 0; r < brickRowCount; r++) {
@@ -581,15 +598,15 @@ function drawBricksLevel3() {
 }
 
 
-// Draw Functions 
+// Draw Levels Functions 
+
+// Group Stage
 function draw() {
     if(!modalShowing){
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     drawBricks();
     drawBall();
     drawPaddle();
-    // drawScore();
-    // drawLives();
     collisionDetection();
     
     if(x + dx > canvas.width-ballRadius || x + dx < ballRadius) {
@@ -606,7 +623,6 @@ function draw() {
             lives--;
             $('.lives').text("Lives: " + lives + "");
             if(!lives) {
-                // alert("GAME OVER");
                 $('#schwifty4')[0].play();
                 return $('.youLoseModal').modal();
                 // document.location.reload();
@@ -637,6 +653,7 @@ function draw() {
 
 }
 
+// SemiFinal Stage
 function drawLevel2() {
     if(!modalShowing){
     ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -718,6 +735,8 @@ function drawLevel2() {
     }
 }
 
+
+// Final Stage
 function drawLevel3() {
     if(!modalShowing){
     ctx.clearRect(0, 0, canvas.width, canvas.height);

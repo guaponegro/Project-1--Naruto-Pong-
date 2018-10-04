@@ -62,7 +62,7 @@
               <p class="motivation">Show Us What You Got!!!!</p>
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-secondary closeModal" data-dismiss="modal">Close</button>
               <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
             </div>
           </div>
@@ -84,7 +84,7 @@
                     <img class='you-lose' src='images/Disqualified.jpg'>
                 </div>
                 <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  <button type="button" class="btn btn-secondary closeModal" data-dismiss="modal">Close</button>
                   <button type="button" class="btn btn-primary reloadPage">Reload</button>
                 </div>
               </div>
@@ -164,17 +164,24 @@
 
 <!-- Sounds -->
 
-
-<audio id="schwifty1" autoplay>
+<!-- Group Stage Congratulations -->
+<audio class='audio-sounds' id="schwifty1" autoplay>
     <source src="Sounds/Get-Schwifty-1.mp3">
 </audio>
 
-<audio id="schwifty2" autoplay>
+<!-- Semifinals Congratulations -->
+<audio class='audio-sounds' id="schwifty2" autoplay>
         <source src="Sounds/Get-Schwifty-2.mp3">
 </audio>
 
-<audio id="schwifty3" autoplay>
+<!-- You Win Congratulations -->
+<audio class='audio-sounds' id="schwifty3" autoplay>
         <source src="Sounds/I_Like_What_You_Got.mp3">
+</audio>
+
+<!-- You Lose -->
+<audio class='audio-sounds' id="schwifty4" autoplay>
+    <source src="Sounds/Disqualified.mp3">
 </audio>
 
 
@@ -218,7 +225,7 @@ let brickHeight = 20;
 let brickPadding = 10;
 let brickOffsetTop = 30;
 let brickOffsetLeft = 50;
-// Scoreboard
+// Score Tracker
 let score = 0;
 // Lives
 let lives = 5;
@@ -231,6 +238,13 @@ let modalShowing = false;
 $(".modal").on("click", ".closeModal", () => {
     modalShowing = false;
   })
+
+
+// Close Audio Function
+$("audio").on("click", ".closeModal", () => {
+    $(".audio-sounds").remove();
+})
+
 
 let bricks = [];
 for(let c = 0; c < brickColumnCount; c++) {
@@ -304,7 +318,6 @@ function collisionDetection() {
                     $('.score').text("Score: " + score + " ");
                     if(score == brickRowCount*brickColumnCount) {
                         modalShowing = true;
-                        // alert("YOU BEAT LEVEL 1! GET READY FOR LEVEL 2!");
                         $('#schwifty1')[0].play();
                         $('.level-1').modal()
                         currentLevel++;
@@ -330,7 +343,6 @@ function collisionDetectionLevel2() {
                     $('.score').text("Score: " + score + " ");
                     if(score == ((brickRowCount*brickColumnCount)*2)) {
                         modalShowing = true;
-                        // alert("YOU BEAT LEVEL 2! GET READY FOR THE FINAL LEVEL!");
                         $('#schwifty2')[0].play();
                         $('.level-2').modal()
                         currentLevel++
@@ -351,7 +363,6 @@ function collisionDetectionLevel2() {
                     $('.score').text("Score: " + score + " ");
                     if(score == ((brickRowCount*brickColumnCount)*2)) {
                         modalShowing = true;
-                        // alert("YOU BEAT LEVEL 2! GET READY FOR THE FINAL LEVEL!");
                         $('#schwifty2')[0].play();
                         $('.level-2').modal()
                         currentLevel++
@@ -377,12 +388,9 @@ function collisionDetectionLevel3() {
                     $('.score').text("Score: " + score + " ");
                     if(score == ((brickRowCount*brickColumnCount)*4)) {
                         modalShowing = true;
-                        // alert("YOU BEAT THE GAME! CONGRATULATIONS!");
                         $('#schwifty3')[0].play();
                         return $('.youWinModal').modal();
                         // document.location.reload();
-                        // currentLevel++;
-                        // drawLevel4();
                     }
                 }
             }
@@ -399,11 +407,8 @@ function collisionDetectionLevel3() {
                     $('.score').text("Score: " + score + " ");
                     if(score == ((brickRowCount*brickColumnCount)*4)) {
                         modalShowing = true;
-                        // alert("YOU BEAT THE GAME! CONGRATULATIONS!");
                         $('#schwifty3')[0].play();
                         return $('.youWinModal').modal();
-                        // currentLevel++;
-                        // drawLevel4();
                     }
                 }
             }
@@ -420,12 +425,9 @@ function collisionDetectionLevel3() {
                     $('.score').text("Score: " + score + " ");
                     if(score == ((brickRowCount*brickColumnCount)*4)) {
                         modalShowing = true;
-                        // alert("YOU BEAT THE GAME! CONGRATULATIONS!");
                         $('#schwifty3')[0].play();
                         return $('.youWinModal').modal();
                         // document.location.reload();
-                        // currentLevel++;
-                        // drawLevel4();
                     }
                 }
             }
@@ -562,6 +564,7 @@ function drawBricksLevel3() {
                 ctx.fill();
                 ctx.closePath();
             } 
+            // Turns Bricks Yellow On Level 3
             if(level3Bricks[c][r].status == 1){
                 let brickX = (c * (brickWidth+brickPadding)) + brickOffsetLeft;
                 let brickY = (r * (brickHeight+brickPadding)) + brickOffsetTop;
@@ -604,6 +607,7 @@ function draw() {
             $('.lives').text("Lives: " + lives + "");
             if(!lives) {
                 // alert("GAME OVER");
+                $('#schwifty4')[0].play();
                 return $('.youLoseModal').modal();
                 // document.location.reload();
             }
@@ -616,7 +620,7 @@ function draw() {
             }
         }
     }
-    
+  // Paddle Speed When Clicking Arrow Keys  
     if(rightPressed && paddleX < canvas.width-paddleWidth) {
         paddleX += 7;
     }
@@ -640,8 +644,6 @@ function drawLevel2() {
     drawBall();
     drawBall2();
     drawPaddle2();
-    // drawScore();
-    // drawLives();
     collisionDetectionLevel2();
     
     if(x + dx > canvas.width-ballRadius || x + dx < ballRadius) {
@@ -658,7 +660,7 @@ function drawLevel2() {
             lives--;
             $('.lives').text("Lives: " + lives + "");
             if(!lives) {
-                // alert("GAME OVER");
+                $('#schwifty4')[0].play();
                 return $('.youLoseModal').modal();
                 // document.location.reload();
             }
@@ -685,7 +687,7 @@ function drawLevel2() {
             lives--;
             $('.lives').text("Lives: " + lives + "");
             if(!lives) {
-                // alert("GAME OVER");
+                $('#schwifty4')[0].play();
                 return $('.youLoseModal').modal();
                 // document.location.reload();
             }
@@ -724,8 +726,6 @@ function drawLevel3() {
     drawBall2();
     drawBall3();
     drawPaddle3();
-    // drawScore();
-    // drawLives();
     collisionDetectionLevel3();
     
     if(x + dx > canvas.width-ballRadius || x + dx < ballRadius) {
@@ -742,7 +742,7 @@ function drawLevel3() {
             lives--;
             $('.lives').text("Lives: " + lives + "");
             if(!lives) {
-                // alert("GAME OVER");
+                $('#schwifty4')[0].play();
                 return $('.youLoseModal').modal();
                 // document.location.reload();
             }
@@ -769,7 +769,7 @@ function drawLevel3() {
             lives--;
             $('.lives').text("Lives: " + lives + "");
             if(!lives) {
-                // alert("GAME OVER");
+                $('#schwifty4')[0].play();
                 return $('.youLoseModal').modal();
                 // document.location.reload();
             }
@@ -796,7 +796,7 @@ function drawLevel3() {
             lives--;
             $('.lives').text("Lives: " + lives + "");
             if(!lives) {
-                // alert("GAME OVER");
+                $('#schwifty4')[0].play();
                 return $('.youLoseModal').modal();
                 // document.location.reload();
             }
@@ -828,7 +828,6 @@ function drawLevel3() {
         requestAnimationFrame(drawLevel3);
     }
 }
-// draw();
 
 
 

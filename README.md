@@ -1,4 +1,4 @@
-# Project-1--Get Schwifty-Pong-
+# Project-1--Planet-Pong-
 Get Schwifty Pong Stories
 
 User will start game by clicking a start game button in the middle of the screen
